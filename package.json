@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "puppet-install": "node node_modules/.bin/wechaty-puppet-install"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
