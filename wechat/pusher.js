@@ -1,4 +1,5 @@
 const bot = require('./provider')
+const { FileBox } = require('wechaty')
 
 /**
  * 
@@ -11,8 +12,7 @@ module.exports = async (topic, data = {}) => {
 	if (data.type === 'text') {
 		await room.say(data.content)
 	} else if (data.type === 'image'){
-		console.log('图片')
-		// const fileBox = FileBox.fromUrl(`http://screenshot.zasoms.cn?url=${ encodeURIComponent(url) }&device=mobile&model=iPhone%20X&selector=%23catalog&quality=40`, 'xwlb.jpg')
-		// await room.say(fileBox)
+		const fileBox = FileBox.fromUrl(data.content)
+		await room.say(fileBox)
 	}
 }
