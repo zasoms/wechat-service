@@ -1,3 +1,9 @@
+- [] 断开后发送wxpusher
+- [] 断开后重新连接
+- [] 重新连接后把二微信发到wxpusher
+- [] 日志记录
+
+
 `docker run -itd --name wechat-service -p 3002:3000 -v /docker/nodejs/wechat-service:/data/wechat-service node:14.18.1`
 
 npm config set registry https://registry.npm.taobao.org \
