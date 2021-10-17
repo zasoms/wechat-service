@@ -17,8 +17,8 @@ const main = () => {
 				onLogout(user)
 				wxpusher({
 					contentType: 3,
-					summary: 'wechat-service退出登录了，该去启动服务了',
-					content: 'wechat-service退出登录了，该去启动服务了'
+					summary: 'wechat-service服务退出登录了，该去启动服务了',
+					content: 'wechat-service服务退出登录了，该去启动服务了'
 				})
 				main()
 			})
@@ -30,24 +30,27 @@ const main = () => {
 				onScan(url, status, (qrcodeImageUrl) => {
 					wxpusher({
 						contentType: 3,
-						summary: 'wechat-service该扫码登录了',
+						summary: 'wechat-service服务该扫码登录了',
 						content: `
+						wechat-service服务该扫码登录了
 						![扫码](${qrcodeImageUrl})
 						`
 					})
 				})
 			})
 			.on('error', (...args) => {
+				console.log('onerror', ...args)
 				onError(...args)
 				reject()
 			})
 			.on('message', onMessage)
-
-		bot.start()
-		.catch(async e => {
-			main()
-			await bot.stop()
-		})
+			
+			bot.start()
+			.catch(async e => {
+				console.log('catch', e)
+				main()
+				await bot.stop()
+			})
 	})
 }
 
