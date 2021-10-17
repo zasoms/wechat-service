@@ -17,8 +17,8 @@ const main = () => {
 				onLogout(user)
 				await wxpusher({
 					contentType: 1,
-					summary: 'wechat-service服务退出登录了，该去启动服务了',
-					content: 'wechat-service服务退出登录了，该去启动服务了'
+					summary: 'wechat-service服务logout，该去启动服务了',
+					content: 'wechat-service服务logout，该去启动服务了'
 				})
 				bot.start()
 			})
@@ -44,12 +44,11 @@ const main = () => {
 			})
 			.on('message', onMessage)
 			
-			bot.start()
-			.catch(async e => {
-				console.log('catch', e)
-				await bot.stop()
-				main()
-			})
+			bot
+				.start()
+				.catch(async e => {
+					await bot.stop()
+				})
 	})
 }
 
