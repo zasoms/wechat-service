@@ -13,13 +13,14 @@ const wxpusher = require('../wxpusher/index')
 const main = () => {
 	return new Promise((resolve, reject) => {
 		bot
-			.on('logout', (user) => {
+			.on('logout', async (user) => {
 				onLogout(user)
-				wxpusher({
-					contentType: 3,
+				await wxpusher({
+					contentType: 1,
 					summary: 'wechat-service服务退出登录了，该去启动服务了',
 					content: 'wechat-service服务退出登录了，该去启动服务了'
 				})
+				await bot.stop()
 				main()
 			})
 			.on('login', (...args) => {
@@ -29,11 +30,11 @@ const main = () => {
 			.on('scan', (url, status) => {
 				onScan(url, status, (qrcodeImageUrl) => {
 					wxpusher({
-						contentType: 3,
+						contentType: 2,
 						summary: 'wechat-service服务该扫码登录了',
 						content: `
-						wechat-service服务该扫码登录了
-						![扫码](${qrcodeImageUrl})
+						<div>wechat-service服务该扫码登录了</div>
+						<image src="${ qrcodeImageUrl }"></image>
 						`
 					})
 				})
@@ -48,8 +49,8 @@ const main = () => {
 			bot.start()
 			.catch(async e => {
 				console.log('catch', e)
-				main()
 				await bot.stop()
+				main()
 			})
 	})
 }

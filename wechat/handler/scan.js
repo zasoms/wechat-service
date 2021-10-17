@@ -1,5 +1,4 @@
 const qrcode = require('qrcode-terminal')
-const wxpusher = require('../../wxpusher/index')
 
 const onScan = (url, status, callback) => {
   qrcode.generate(url, { small: true })
@@ -8,7 +7,6 @@ const onScan = (url, status, callback) => {
     'https://api.qrserver.com/v1/create-qr-code/?data=',
     encodeURIComponent(url),
   ].join('')
-
 
 
   console.log(`[${status}] ${qrcodeImageUrl}\nScan QR Code above to log in: `)
