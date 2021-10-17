@@ -1,3 +1,5 @@
+// 文档：https://wechaty.js.org/docs/api/message
+
 const pusher = require('../wechat/pusher')
 
 exports.sendget = async (ctx) => {
