@@ -20,8 +20,7 @@ const main = () => {
 					summary: 'wechat-service服务退出登录了，该去启动服务了',
 					content: 'wechat-service服务退出登录了，该去启动服务了'
 				})
-				await bot.stop()
-				main()
+				bot.start()
 			})
 			.on('login', (...args) => {
 				onLogin(...args)
@@ -40,7 +39,6 @@ const main = () => {
 				})
 			})
 			.on('error', (...args) => {
-				console.log('onerror', ...args)
 				onError(...args)
 				reject()
 			})
