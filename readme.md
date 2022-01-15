@@ -8,6 +8,9 @@
 
 
 
+
+<!-- Bot error: Error: Cannot find module 'gerror'  可以试试  cd node_modules/wechaty  && npm install -->
+
 #### step1:
 ```
 docker pull node:14.18.1
